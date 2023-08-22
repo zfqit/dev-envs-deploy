@@ -1,0 +1,131 @@
+version: "3"
+# 指定ip容器内部相互访问
+networks:
+  my_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
+
+services:
+  # --- MySQL
+  mysql-5.7:
+    image: mysql:5.7
+    container_name: mysql-5.7
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "7033:3307"
+    volumes:
+      # 数据挂载
+      - ./mysql-5.7/data/:/var/lib/mysql/
+      # 配置挂载
+      - ./mysql-5.7/conf/:/etc/mysql/conf.d/
+      # 日志
+      - ./mysql-5.7/logs/:/logs
+      # 初始化脚本
+      - ./mysql/source:/docker-entrypoint-initdb.d
+      # my.cnf
+      - ./mysql-5.7/my.cnf:/etc/mysql/my.cnf
+    command: --init-file /docker-entrypoint-initdb.d/init.sql
+    privileged: true
+    restart: always
+    networks:
+      my_net:
+        ipv4_address: 172.30.0.10
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    restart: always
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "6033:3306"
+    volumes:
+      # 数据挂载
+      - ./mysql/data/:/var/lib/mysql/
+      - ./mysql/mysql-files:/var/lib/mysql-files/
+      # 配置挂载
+      - ./mysql/conf/:/etc/mysql/conf.d/
+      # 日志
+      - ./mysql/logs/:/logs
+      # 初始化脚本
+      - ./mysql/source:/docker-entrypoint-initdb.d
+      # my.cnf
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    command: --init-file /docker-entrypoint-initdb.d/init.sql
+    networks:
+      my_net:
+        ipv4_address: 172.30.0.11
+
+  # ---- Redis
+  redis:
+    image: redis:6.2.6
+    container_name: redis
+    ports:
+      - "9736:6379"
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+    volumes:
+      # 配置文件
+      - ./redis/conf/redis.conf:/redis/config/redis.conf
+      # 数据文件
+      - ./redis/data/:/redis/data
+    command: "redis-server /redis/config/redis.conf"
+    privileged: true
+    restart: always
+    networks:
+      my_net:
+        ipv4_address: 172.30.0.12
+
+  # --- Zookeeper
+  # zookeeper:
+  #   image: zookeeper:3.6.3
+  #   container_name: zookeeper
+  #   environment:
+  #     # 时区上海
+  #     TZ: Asia/Shanghai
+  #   privileged: true
+  #   volumes:
+  #     - ./zookeeper/data:/data
+  #     - ./zookeeper/datalogs:/datalogs
+  #     - ./zookeeper/logs:/logs
+  #   ports:
+  #     - '1812:2181'
+  #   networks:
+  #     my_net:
+  #       ipv4_address: 172.30.0.13
+
+  # nacos-server
+  # nacos-server:
+  #   image: nacos/nacos-server:v2.2.0
+  #   container_name: nacos-server
+  #   restart: always
+  #   environment:
+  #     PREFER_HOST_MODE: ip
+  #     MODE: standalone
+  #     SPRING_DATASOURCE_PLATFORM: mysql
+  #     # mysql信息配置
+  #     MYSQL_SERVICE_HOST: mysql
+  #     MYSQL_SERVICE_DB_NAME: nacos_dev
+  #     MYSQL_SERVICE_PORT: 3306
+  #     MYSQL_SERVICE_USER: root
+  #     MYSQL_SERVICE_PASSWORD: 123456
+  #     MYSQL_SERVICE_DB_PARAM: characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+  #     JVM_XMS: 128m
+  #     JVM_MMS: 128m
+  #   volumes:
+  #     - ./nacos/logs/:/home/nacos/logs
+  #   ports:
+  #     - "8488:8848"
+  #     - "8489:9848"
+  #     - "5559:9555"
+  #   networks:
+  #     my_net:
+  #       ipv4_address: 172.30.0.14

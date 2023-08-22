@@ -1,0 +1,20 @@
+OpenJDK 64-Bit Server VM (25.352-b08) for linux-amd64 JRE (1.8.0_352-b08), built on Oct 21 2022 14:30:59 by "mockbuild" with gcc 4.8.5 20150623 (Red Hat 4.8.5-44)
+Memory: 4k page, physical 8047636k(1859452k free), swap 1048572k(1048572k free)
+CommandLine flags: -XX:GCLogFileSize=104857600 -XX:InitialHeapSize=134217728 -XX:MaxHeapSize=1073741824 -XX:MaxNewSize=536870912 -XX:NewSize=536870912 -XX:NumberOfGCLogFiles=10 -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseGCLogFileRotation -XX:+UseParallelGC 
+2023-07-24T19:55:04.961+0800: 0.439: [GC (Allocation Failure) [PSYoungGen: 98816K->3440K(114688K)] 98816K->3456K(115200K), 0.0025728 secs] [Times: user=0.01 sys=0.00, real=0.01 secs] 
+2023-07-24T19:55:05.231+0800: 0.709: [GC (Allocation Failure) [PSYoungGen: 102256K->5022K(114688K)] 102272K->5110K(115200K), 0.0030336 secs] [Times: user=0.02 sys=0.00, real=0.01 secs] 
+2023-07-24T19:55:05.533+0800: 1.011: [GC (Allocation Failure) [PSYoungGen: 103838K->6108K(114688K)] 103926K->6204K(115200K), 0.0044672 secs] [Times: user=0.02 sys=0.01, real=0.01 secs] 
+2023-07-24T19:55:05.598+0800: 1.076: [GC (Metadata GC Threshold) [PSYoungGen: 49336K->6334K(114688K)] 49432K->6438K(115200K), 0.0038717 secs] [Times: user=0.02 sys=0.00, real=0.00 secs] 
+2023-07-24T19:55:05.602+0800: 1.081: [Full GC (Metadata GC Threshold) [PSYoungGen: 6334K->6194K(114688K)] [ParOldGen: 104K->89K(1536K)] 6438K->6284K(116224K), [Metaspace: 20440K->20440K(1069056K)], 0.0302826 secs] [Times: user=0.14 sys=0.01, real=0.03 secs] 
+2023-07-24T19:55:05.775+0800: 1.254: [GC (Allocation Failure) [PSYoungGen: 105010K->8606K(114688K)] 105100K->8704K(116224K), 0.0044686 secs] [Times: user=0.02 sys=0.00, real=0.00 secs] 
+2023-07-24T19:55:05.974+0800: 1.452: [GC (Allocation Failure) [PSYoungGen: 107422K->9710K(150016K)] 107520K->11744K(154112K), 0.0070309 secs] [Times: user=0.03 sys=0.01, real=0.00 secs] 
+2023-07-24T19:55:06.213+0800: 1.691: [GC (Allocation Failure) [PSYoungGen: 149998K->12284K(152576K)] 152032K->15126K(156672K), 0.0053650 secs] [Times: user=0.02 sys=0.01, real=0.01 secs] 
+2023-07-24T19:55:06.218+0800: 1.697: [Full GC (Ergonomics) [PSYoungGen: 12284K->10692K(152576K)] [ParOldGen: 2841K->4057K(7680K)] 15126K->14750K(160256K), [Metaspace: 24503K->24503K(1071104K)], 0.0347506 secs] [Times: user=0.14 sys=0.01, real=0.04 secs] 
+2023-07-24T19:55:06.417+0800: 1.895: [GC (Allocation Failure) [PSYoungGen: 150980K->8544K(200192K)] 155038K->16239K(208896K), 0.0050806 secs] [Times: user=0.02 sys=0.01, real=0.00 secs] 
+2023-07-24T19:55:06.422+0800: 1.901: [Full GC (Ergonomics) [PSYoungGen: 8544K->7378K(200192K)] [ParOldGen: 7695K->8321K(14848K)] 16239K->15699K(215040K), [Metaspace: 25197K->25197K(1073152K)], 0.0460880 secs] [Times: user=0.22 sys=0.00, real=0.05 secs] 
+2023-07-24T19:55:06.575+0800: 2.053: [GC (Allocation Failure) [PSYoungGen: 198866K->9840K(215040K)] 207187K->18169K(229888K), 0.0042338 secs] [Times: user=0.02 sys=0.00, real=0.00 secs] 
+2023-07-24T19:55:06.754+0800: 2.233: [GC (Allocation Failure) [PSYoungGen: 210544K->12464K(227328K)] 218873K->20801K(242176K), 0.0042073 secs] [Times: user=0.01 sys=0.01, real=0.00 secs] 
+2023-07-24T19:55:07.145+0800: 2.623: [GC (Allocation Failure) [PSYoungGen: 225456K->15060K(228352K)] 233793K->23405K(243200K), 0.0058058 secs] [Times: user=0.03 sys=0.00, real=0.00 secs] 
+2023-07-24T19:55:07.742+0800: 3.220: [GC (Allocation Failure) [PSYoungGen: 228052K->17396K(250368K)] 236397K->27077K(265216K), 0.0107961 secs] [Times: user=0.05 sys=0.01, real=0.01 secs] 
+2023-07-24T19:55:08.262+0800: 3.740: [GC (Metadata GC Threshold) [PSYoungGen: 126009K->19940K(252928K)] 135690K->32283K(267776K), 0.0099970 secs] [Times: user=0.04 sys=0.01, real=0.01 secs] 
+2023-07-24T19:55:08.273+0800: 3.751: [Full GC (Metadata GC Threshold) [PSYoungGen: 19940K->12797K(252928K)] [ParOldGen: 12343K->14409K(24064K)] 32283K->27206K(276992K), [Metaspace: 41620K->41620K(1087488K)], 0.0797623 secs] [Times: user=0.34 sys=0.01, real=0.08 secs] 
